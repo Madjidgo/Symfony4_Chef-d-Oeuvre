@@ -51,6 +51,11 @@ class Product {
 	private $updatedAt;
 
 	/**
+	 * @ORM\Column(type="integer")
+	 */
+	private $price;
+
+	/**
 	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
 	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
 	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -121,6 +126,16 @@ class Product {
 	 */
 	public function setId($id) {
 		$this->id = $id;
+
+		return $this;
+	}
+
+	public function getPrice() :  ? int {
+		return $this->price;
+	}
+
+	public function setPrice(int $price) : self{
+		$this->price = $price;
 
 		return $this;
 	}
