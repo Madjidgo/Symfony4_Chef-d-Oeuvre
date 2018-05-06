@@ -1,5 +1,19 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-   	
+	<div class="container">
+	<div class="form-group">
+	{{ form_errors(form) }}
+    
+    {{ form_row(form.imageFile) }}
+
+	<div class="form-group">
+    {{ form_row(form.imageName,{'attr':{'class':'form-control'}}) }}
+</div>
+    {{ form_row(form.imageSize,{'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.updatedAt,{'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.price,{'attr':{'class':'form-control'}}) }}
+    {{ form_row(form.description,{'attr':{'class':'form-control'}}) }}
+
     <button class="btn">{{ button_label|default('Save') }}</button>
+	</div>
+</div>
 {{ form_end(form) }}

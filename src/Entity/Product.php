@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -24,6 +25,7 @@ class Product {
 	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
 	 *
 	 * @Vich\UploadableField(mapping="product_image", fileNameProperty="imageName", size="imageSize")
+	 *
 	 *
 	 * @var File
 	 */
@@ -54,6 +56,12 @@ class Product {
 	 * @ORM\Column(type="integer")
 	 */
 	private $price;
+
+	/**
+	 * @ORM\Column(type="text")
+	 * @Assert\NotBlank()
+	 */
+	private $description;
 
 	/**
 	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
@@ -136,6 +144,16 @@ class Product {
 
 	public function setPrice(int $price) : self{
 		$this->price = $price;
+
+		return $this;
+	}
+
+	public function getDescription():  ? string {
+		return $this->description;
+	}
+
+	public function setDescription(string $description) : self{
+		$this->description = $description;
 
 		return $this;
 	}
